@@ -10,7 +10,7 @@ import java.io.IOException;
 public class AppMain extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(AppMain.class.getResource("MainFileRename.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(AppMain.class.getResource("index.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("JPLToolbox");
         stage.setScene(scene);

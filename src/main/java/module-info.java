@@ -8,4 +8,6 @@ module com.example.toolbox {
     exports com.example.toolbox;
     exports RenameFile;
     opens RenameFile to javafx.fxml;
+    exports General;
+    opens General to  javafx.fxml;
 }
