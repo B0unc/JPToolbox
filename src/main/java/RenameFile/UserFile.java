@@ -22,6 +22,10 @@ public class UserFile implements Initializable {
     // FXML Controllers
     @FXML
             public Label PreviewTitleLabel;
+    public Button SubmitRenameFiles;
+    public Button RemoveUserFiles;
+    public Button UserNameNumSave;
+    public Button FileBrowser;
     @FXML
             private ListView<String> UserFileList;
     @FXML
