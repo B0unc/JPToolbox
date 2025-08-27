@@ -19,29 +19,22 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class UserFile implements Initializable {
-    @FXML
-            public Label PreviewTitleLabel;
     // FXML Controllers
     @FXML
-            private Button FileBrowser;
+            public Label PreviewTitleLabel;
     @FXML
             private ListView<String> UserFileList;
     @FXML
             private TextField UserNameShow;
     @FXML
             private TextField UserNumShow;
-    @FXML
-            private Button UserNameNumSave;
-    @FXML
-            private Button RemoveUserFiles;
+
     @FXML
             private Label UserNumError;
     @FXML
             private Label PreviewShowTitle;
     @FXML
             private ListView<String> UserSubFileList;
-    @FXML
-            private Button SubmitRenameFiles;
 
     // Variables
     String NameShow;
