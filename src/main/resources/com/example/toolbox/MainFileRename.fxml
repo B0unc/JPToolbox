@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="401.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="RenameFile.UserFile">
+   <children>
+      <Button fx:id="FileBrowser" layoutX="14.0" layoutY="31.0" mnemonicParsing="false" onAction="#getUserFiles" text="Browse files" />
+      <ListView fx:id="UserFileList" editable="true" layoutX="14.0" layoutY="64.0" prefHeight="291.0" prefWidth="268.0" />
+      <Label layoutX="594.0" layoutY="56.0" text="Name of Show:" />
+      <TextField fx:id="UserNameShow" layoutX="594.0" layoutY="73.0" promptText="Enter Name" />
+      <Label layoutX="594.0" layoutY="115.0" text="Number of total episodes:" />
+      <TextField fx:id="UserNumShow" layoutX="594.0" layoutY="132.0" promptText="# of total episodes" />
+      <Button fx:id="UserNameNumSave" layoutX="702.0" layoutY="188.0" mnemonicParsing="false" onAction="#SaveUserNameNum" text="Save" />
+      <Button fx:id="RemoveUserFiles" layoutX="14.0" layoutY="361.0" mnemonicParsing="false" onAction="#DeleteCurrentFiles" text="Cancel" />
+      <Label fx:id="UserNumError" layoutX="594.0" layoutY="162.0" prefHeight="17.0" prefWidth="149.0" textFill="RED" />
+      <Label fx:id="PreviewTitleLabel" layoutX="589.0" layoutY="218.0" prefHeight="17.0" prefWidth="92.0" text="Preview of Title:" />
+      <Label fx:id="PreviewShowTitle" layoutX="589.0" layoutY="243.0" prefHeight="26.0" prefWidth="195.0" underline="true" />
+      <ListView fx:id="UserSubFileList" layoutX="301.0" layoutY="64.0" prefHeight="291.0" prefWidth="274.0" />
+      <Button fx:id="SubmitRenameFiles" layoutX="687.0" layoutY="349.0" mnemonicParsing="false" onAction="#RenameUserFiles" text="Rename" />
+   </children>
+</AnchorPane>
