@@ -66,11 +66,19 @@ public class GeneralLayout {
         System.out.println("Switching to rename scene");
     }
 
+    @FXML
+    public void SwitchToMKVRemove(){
+        Pane MKVR = LoadFXMLFiles("/com/example/toolbox/MKVReIdx.fxml");
+        MainPane.setCenter(MKVR);
+        System.out.println("Switching to MKV remove scene");
+    }
+
     public void initialize() {
         // Debugging to find files
         System.out.println("Testing file paths:");
         System.out.println("home.fxml found: " + (getClass().getResource("/com/example/toolbox/index.fxml") != null)); // Make sure to add / to the begging since fxml and java class are in two different folders
         System.out.println("MainFileRename.fxml found: " + (getClass().getResource("/com/example/toolbox/MainFileRename.fxml") != null));
+        System.out.println("MKVReIdx.fxml found: " + (getClass().getResource("/com/example/toolbox/MKVReIdx.fxml") != null));
     }
 
 }

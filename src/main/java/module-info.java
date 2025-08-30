@@ -12,4 +12,6 @@ module com.example.toolbox {
     opens RenameFile to javafx.fxml;
     exports General;
     opens General to  javafx.fxml;
+    exports MKVRemover;
+    opens MKVRemover to  javafx.fxml;
 }
