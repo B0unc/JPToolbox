@@ -4,6 +4,7 @@ module com.example.toolbox {
     requires org.apache.commons.io;
     requires java.desktop;
     requires javafx.graphics;
+    requires java.logging;
 
 
     opens com.example.toolbox to javafx.fxml;

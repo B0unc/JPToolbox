@@ -10,8 +10,11 @@ import javafx.scene.layout.Pane;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Logger;
 
 public class GeneralLayout {
+    // Testing logger
+    Logger log = Logger.getLogger(GeneralLayout.class.getName());
     @FXML
     private BorderPane MainPane; // Where we load our FXML files to
     // The left side is always taken for scene transitions
@@ -30,7 +33,7 @@ public class GeneralLayout {
         }
 
         if(getClass().getResource(filePath) == null){
-            System.out.println("File not found " + filePath);
+            log.info("File not found " + filePath);
         }
 
         // Assume that the FXML file is not loaded in, yet
@@ -49,6 +52,7 @@ public class GeneralLayout {
             alert.setHeaderText(null);
             alert.setContentText("Error Loading Pane\n");
             alert.showAndWait();
+            log.info("Error Loading Pane");
             throw new RuntimeException(e);
         }
 
@@ -76,9 +80,9 @@ public class GeneralLayout {
     public void initialize() {
         // Debugging to find files
         System.out.println("Testing file paths:");
-        System.out.println("home.fxml found: " + (getClass().getResource("/com/example/toolbox/index.fxml") != null)); // Make sure to add / to the begging since fxml and java class are in two different folders
-        System.out.println("MainFileRename.fxml found: " + (getClass().getResource("/com/example/toolbox/MainFileRename.fxml") != null));
-        System.out.println("MKVReIdx.fxml found: " + (getClass().getResource("/com/example/toolbox/MKVReIdx.fxml") != null));
+        log.info("home.fxml found: " + (getClass().getResource("/com/example/toolbox/index.fxml") != null)); // Make sure to add / to the begging since fxml and java class are in two different folders
+        log.info("MainFileRename.fxml found: " + (getClass().getResource("/com/example/toolbox/MainFileRename.fxml") != null));
+        log.info("MKVReIdx.fxml found: " + (getClass().getResource("/com/example/toolbox/MKVReIdx.fxml") != null));
     }
 
 }

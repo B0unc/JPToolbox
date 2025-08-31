@@ -17,8 +17,11 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Logger;
 
 public class UserFile implements Initializable {
+    //Log
+    Logger log = Logger.getLogger(UserFile.class.getName());
     // FXML Controllers
     @FXML
             public Label PreviewTitleLabel;
@@ -162,9 +165,10 @@ public class UserFile implements Initializable {
             UserNameShow.clear();
             NameShow = null;
             // Debugging
-            System.out.println("Please Enter Numbers only");
+            log.info("Please Enter Numbers only");
         }
         catch (Exception e) {
+            log.info(e.getMessage());
             UserNumError.setText("Something went wrong Please try again");
         }
 
@@ -231,13 +235,13 @@ public class UserFile implements Initializable {
             }
             else {
                 if(!b1){
-                    System.out.println("Renaming failed at idx " + idx);
-                    System.out.println("Video File: " + videoFile.getName());
+                    log.info("Renaming failed at idx " + idx);
+                    log.info("Video File: " + videoFile.getName());
 
                 }
                 else {
-                    System.out.println("Renaming failed at idx " + idx);
-                    System.out.println("Sub File: " + subFile.getName());
+                    log.info("Renaming failed at idx " + idx);
+                    log.info("Sub File: " + subFile.getName());
                 }
                 Success = false;
             }
