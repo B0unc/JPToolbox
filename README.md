@@ -1,6 +1,6 @@
 # JPToolbox
 
-## Making the workflow of Language learning simpler and accessible for non-tech savvy users
+Making the workflow of Language learning simpler and accessible for non-tech savvy users
 
 # Why should I use it?
 
