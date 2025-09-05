@@ -257,7 +257,6 @@ public class UserFile implements Initializable {
     }
 
 
-    // clears all current user selected files
     public void DeleteCurrentFiles(){
         UserSubFileList.getItems().clear();
         UserFileList.getItems().clear();
