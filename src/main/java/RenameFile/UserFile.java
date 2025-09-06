@@ -183,10 +183,7 @@ public class UserFile implements Initializable {
         System.out.println("Renaming UserFiles");
         int i = 1;
         boolean Success;
-        // For now Two for loops im fucking lazy
-        // The better solution is to do a for loop of the max size of the video or sublist
-                // need a file variable for each video and sublist, and then we can rename it
-        // I have to get the path of the file
+
         for(int idx = 0; idx < videoList.size(); idx++){
             // Get the BaseName for the renaming
             // Get the Video and Sub files
