@@ -179,16 +179,16 @@ public class UserFile implements Initializable {
         Return value: None
         Description: Renames both the video and subtitle files
     */
-    public void RenameUserFiles(){
+    public void RenameUserFiles(int i){
         System.out.println("Renaming UserFiles");
-        int i = 1;
-        boolean Success;
+        boolean Success = false;
 
         for(int idx = 0; idx < videoList.size(); idx++){
             // Get the BaseName for the renaming
             // Get the Video and Sub files
             // Get the Extension for each video and sub file
             // Get the Directory for each file
+            System.out.println(i);
             String baseRename = NameShow + " " + i;
             File videoFile = videoList.get(idx);
             File subFile = subList.get(idx);
@@ -224,6 +224,10 @@ public class UserFile implements Initializable {
                 System.out.println("Video File: " + New_videoFile.getName());
                 System.out.println("Sub File: " + New_subFile.getName());
 
+                UserFileList.getItems().clear();
+                UserSubFileList.getItems().clear();
+                UserNameShow.clear();
+                UserNumShow.clear();
                 Success = true;
 
             }
@@ -240,13 +244,12 @@ public class UserFile implements Initializable {
                 Success = false;
             }
             i++;
-
-            if(Success){
-                System.out.println("The big function Renamed successfully");
-                UserFileList.getItems().clear();
-                UserSubFileList.getItems().clear();
-            }
-
+        }
+        System.out.println("We have exited the for loop");
+        if(Success){
+            System.out.println("The big function Renamed successfully");
+            DeleteCurrentFiles();
+            System.out.println(i);
         }
     }
 
@@ -254,6 +257,14 @@ public class UserFile implements Initializable {
     public void DeleteCurrentFiles(){
         UserSubFileList.getItems().clear();
         UserFileList.getItems().clear();
+        UserNameShow.clear();
+        UserNumShow.clear();
+        videoList.clear();
+        subList.clear();
+    }
+
+    public void runUserFiles(){
+        RenameUserFiles(1);
     }
 
     // Set the default user file path
