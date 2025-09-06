@@ -227,9 +227,6 @@ public class UserFile implements Initializable {
                 System.out.println("Video File: " + New_videoFile.getName());
                 System.out.println("Sub File: " + New_subFile.getName());
 
-                // Setting the current idx
-                videoList.set(idx, New_videoFile);
-                subList.set(idx, New_subFile);
                 Success = true;
 
             }
