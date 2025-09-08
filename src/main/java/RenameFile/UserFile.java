@@ -152,7 +152,7 @@ public class UserFile implements Initializable {
         try{
             NameShow = UserNameShow.getText();
             NumShow = Integer.parseInt(UserNumShow.getText());
-            PreviewShowTitle.setText(NameShow + " " + "[1 - " + NumShow + "]");
+            PreviewShowTitle.setText(NameShow + "[1 - " + NumShow + "]");
             // Debugging
             System.out.println(NameShow);
             System.out.println(NumShow);
@@ -177,11 +177,22 @@ public class UserFile implements Initializable {
     /*
         Name: RenameUserFiles
         Return value: None
-        Description: Renames both the video and subtitle files
+        Description: Renames both the video and subtitle files. If you don't clear the UserNameShow and num a bug will occur when the user
+        trys to use the rename function twice, It will continue to count from the last input. For example, the first pass the user enters a total number of shows as
+        6, and on the second pass the user enters 3. You will expect the file to be name title.1 title.2 and title.3, but if you don't clear the two list after the first pass
+        it will produce this output title.7 title.8 and title.9
+
+        ** Someday I will implement a more readable solution but now idc
     */
     public void RenameUserFiles(int i){
         System.out.println("Renaming UserFiles");
         boolean Success = false;
+        if(UserSubFileList.getItems().isEmpty() || UserFileList.getItems().isEmpty()){
+            System.out.println("No user files to rename");
+            UserNameShow.clear();
+            UserNumShow.clear();
+            return;
+        }
 
         for(int idx = 0; idx < videoList.size(); idx++){
             // Get the BaseName for the renaming
@@ -189,7 +200,7 @@ public class UserFile implements Initializable {
             // Get the Extension for each video and sub file
             // Get the Directory for each file
             System.out.println(i);
-            String baseRename = NameShow + " " + i;
+            String baseRename = NameShow + i;
             File videoFile = videoList.get(idx);
             File subFile = subList.get(idx);
 
