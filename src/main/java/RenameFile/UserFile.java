@@ -10,7 +10,6 @@ import javafx.scene.input.TransferMode;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import org.apache.commons.io.FilenameUtils;
-import org.apache.commons.io.filefilter.FalseFileFilter;
 
 import java.io.File;
 import java.net.URL;
