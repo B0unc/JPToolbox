@@ -7,8 +7,8 @@ module com.example.toolbox {
     requires java.logging;
 
 
-    opens com.example.toolbox to javafx.fxml;
-    exports com.example.toolbox;
+    opens AppMainToolbox to javafx.fxml;
+    exports AppMainToolbox;
     exports RenameFile;
     opens RenameFile to javafx.fxml;
     exports General;

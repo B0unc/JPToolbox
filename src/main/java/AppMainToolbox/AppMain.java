@@ -1,4 +1,4 @@
-package com.example.toolbox;
+package AppMainToolbox;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
