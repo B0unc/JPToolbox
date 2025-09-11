@@ -59,20 +59,20 @@ public class GeneralLayout {
     }
     @FXML
     public void SwitchToHomeScene(){
-        Pane Home = LoadFXMLFiles("/com/example/toolbox/home.fxml");
+        Pane Home = LoadFXMLFiles("/Scenes/home.fxml");
         MainPane.setCenter(Home);
         System.out.println("Switching to home scene");
     }
     @FXML
     public void SwitchToRenameFilesScene(){
-        Pane Rename = LoadFXMLFiles("/com/example/toolbox/MainFileRename.fxml");
+        Pane Rename = LoadFXMLFiles("/Scenes/MainFileRename.fxml");
         MainPane.setCenter(Rename);
         System.out.println("Switching to rename scene");
     }
 
     @FXML
     public void SwitchToMKVRemove(){
-        Pane MKVR = LoadFXMLFiles("/com/example/toolbox/MKVReIdx.fxml");
+        Pane MKVR = LoadFXMLFiles("/Scenes/MKVReIdx.fxml");
         MainPane.setCenter(MKVR);
         System.out.println("Switching to MKV remove scene");
     }
@@ -80,9 +80,9 @@ public class GeneralLayout {
     public void initialize() {
         // Debugging to find files
         System.out.println("Testing file paths:");
-        log.info("home.fxml found: " + (getClass().getResource("/com/example/toolbox/index.fxml") != null)); // Make sure to add / to the begging since fxml and java class are in two different folders
-        log.info("MainFileRename.fxml found: " + (getClass().getResource("/com/example/toolbox/MainFileRename.fxml") != null));
-        log.info("MKVReIdx.fxml found: " + (getClass().getResource("/com/example/toolbox/MKVReIdx.fxml") != null));
+        log.info("home.fxml found: " + (getClass().getResource("/Scenes/index.fxml") != null)); // Make sure to add / to the begging since fxml and java class are in two different folders
+        log.info("MainFileRename.fxml found: " + (getClass().getResource("/Scenes/MainFileRename.fxml") != null));
+        log.info("MKVReIdx.fxml found: " + (getClass().getResource("/Scenes/MKVReIdx.fxml") != null));
     }
 
 }

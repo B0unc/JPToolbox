@@ -12,7 +12,9 @@ import javafx.stage.Stage;
 import org.apache.commons.io.FilenameUtils;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
@@ -187,73 +189,51 @@ public class UserFile implements Initializable {
 
         ** Someday I will implement a more readable solution but now idc
     */
-    public void RenameUserFiles(int i){
+    public void RenameUserFiles(int i) throws IOException {
         System.out.println("Renaming UserFiles");
-        boolean Success = false;
-        if(UserSubFileList.getItems().isEmpty() || UserFileList.getItems().isEmpty()){
-            System.out.println("No user files to rename");
-            UserNameShow.clear();
-            UserNumShow.clear();
+        if(UserSubFileList.getItems().isEmpty() || UserFileList.getItems().isEmpty()
+        || NameShow == null || NumShow == 0){
+            if(NameShow == null){
+                System.out.println("Please enter a file name or enter a new one");
+            }
+            else if(NumShow == 0){
+                System.out.println("Please enter how many Episodes there are");
+            }
+            else{
+                System.out.println("No user files to rename");
+            }
+            DeleteCurrentFiles();
             return;
         }
 
-        for(int idx = 0; idx < videoList.size(); idx++){
+        for(int idx = 0; idx < NumShow; idx++){
+            // Getting the info for the file rename
             String baseRename = NameShow + i;
             Path videoFile = videoList.get(idx);
             Path subFile = subList.get(idx);
-
-            // Get the Extension of each file
             String VideoExtension = FilenameUtils.getExtension(videoFile.toString());
             String SubExtension = FilenameUtils.getExtension(subFile.toString());
-            // Get the new Names for each file
             String newVideoName = baseRename + "." + VideoExtension;
             String newSubName = baseRename + "." + SubExtension;
 
-            DisplayRenameUserFilesDebug(i,baseRename, VideoExtension, SubExtension, newVideoName, newSubName, videoFile, subFile);
+            if(debug){DisplayRenameUserFilesDebug(i,baseRename, VideoExtension, SubExtension, newVideoName, newSubName, videoFile, subFile);}
 
             //Create the new file
-            File New_videoFile = new File(videoFile.getParent().toFile(), newVideoName);
-            File New_subFile = new File(subFile.getParent().toFile(), newSubName);
-
-            boolean b1 = videoFile.toFile().renameTo(New_videoFile);
-            boolean b2 = subFile.toFile().renameTo(New_subFile);
-            if(b1 && b2){
+            boolean video_rename_success = renameTheFile(videoFile,newVideoName);
+            boolean sub_rename_success = renameTheFile(subFile,newSubName);
+            if(video_rename_success && sub_rename_success){
                 System.out.println("Renamed successfully");
-                System.out.println("Video File: " + New_videoFile.getName());
-                System.out.println("Sub File: " + New_subFile.getName());
-
-                UserFileList.getItems().clear();
-                UserSubFileList.getItems().clear();
-                UserNameShow.clear();
-                UserNumShow.clear();
-                Success = true;
-
-            }
-            else {
-                if(!b1){
-                    log.info("Renaming failed at idx " + idx);
-                    log.info("Video File: " + videoFile.getFileName());
-
-                }
-                else {
-                    log.info("Renaming failed at idx " + idx);
-                    log.info("Sub File: " + subFile.getFileName());
-                }
-                Success = false;
             }
             i++;
         }
         System.out.println("We have exited the for loop");
-        if(Success){
-            System.out.println("The big function Renamed successfully");
-            DeleteCurrentFiles();
-            System.out.println(i);
-        }
+        DeleteCurrentFiles();
+        NameShow = null;
     }
 
     private void DisplayRenameUserFilesDebug(int currentIdx, String baseRename, String VideoExtension, String SubExtension,
                                              String newVideoName, String newSubName, Path videoFile, Path subFile){
-        if(debug) {
+
             System.out.println(currentIdx);
             System.out.println("New Name: " + baseRename + "\n");
             System.out.println("Video Info\n" +
@@ -265,7 +245,12 @@ public class UserFile implements Initializable {
                     "Sub's Extension: " + SubExtension + "\n" +
                     "Sub's new Name: " + newSubName + "\n");
             System.out.println("-----------------------------------------------------------------------------------\n");
-        }
+    }
+
+    private Boolean renameTheFile(Path oldUserFile, String newName) throws IOException{
+        Path newUserFile = oldUserFile.getParent().resolve(newName);
+        Files.move(oldUserFile, newUserFile);
+        return true;
     }
 
 
@@ -278,7 +263,8 @@ public class UserFile implements Initializable {
         subList.clear();
     }
 
-    public void runUserFiles(){
+    // Main entry point for the rename files function
+    public void runUserFiles() throws IOException {
         RenameUserFiles(1);
     }
 
