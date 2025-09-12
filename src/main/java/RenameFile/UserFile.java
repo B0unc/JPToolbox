@@ -189,7 +189,7 @@ public class UserFile implements Initializable {
 
         ** Someday I will implement a more readable solution but now idc
     */
-    public void RenameUserFiles(int i) throws IOException {
+    public void RenameUserFiles(int debug_enable) throws IOException {
         System.out.println("Renaming UserFiles");
         if(UserSubFileList.getItems().isEmpty() || UserFileList.getItems().isEmpty()
         || NameShow == null || NumShow == 0){
@@ -202,13 +202,15 @@ public class UserFile implements Initializable {
             else{
                 System.out.println("No user files to rename");
             }
-            DeleteCurrentFiles();
+            deleteUserInputs();
             return;
         }
 
+        int current_episode_count = 1;
+
         for(int idx = 0; idx < NumShow; idx++){
             // Getting the info for the file rename
-            String baseRename = NameShow + i;
+            String baseRename = NameShow + current_episode_count;
             Path videoFile = videoList.get(idx);
             Path subFile = subList.get(idx);
             String VideoExtension = FilenameUtils.getExtension(videoFile.toString());
@@ -216,7 +218,7 @@ public class UserFile implements Initializable {
             String newVideoName = baseRename + "." + VideoExtension;
             String newSubName = baseRename + "." + SubExtension;
 
-            if(debug){DisplayRenameUserFilesDebug(i,baseRename, VideoExtension, SubExtension, newVideoName, newSubName, videoFile, subFile);}
+            if(debug){DisplayRenameUserFilesDebug(debug_enable,baseRename, VideoExtension, SubExtension, newVideoName, newSubName, videoFile, subFile);}
 
             //Create the new file
             boolean video_rename_success = renameTheFile(videoFile,newVideoName);
@@ -224,11 +226,10 @@ public class UserFile implements Initializable {
             if(video_rename_success && sub_rename_success){
                 System.out.println("Renamed successfully");
             }
-            i++;
+            current_episode_count++;
         }
         System.out.println("We have exited the for loop");
-        DeleteCurrentFiles();
-        NameShow = null;
+        deleteUserInputs();
     }
 
     private void DisplayRenameUserFilesDebug(int currentIdx, String baseRename, String VideoExtension, String SubExtension,
@@ -254,13 +255,15 @@ public class UserFile implements Initializable {
     }
 
 
-    public void DeleteCurrentFiles(){
+    public void deleteUserInputs(){
         UserSubFileList.getItems().clear();
         UserFileList.getItems().clear();
         UserNameShow.clear();
         UserNumShow.clear();
         videoList.clear();
         subList.clear();
+        NameShow = null;
+        NumShow = 0;
     }
 
     // Main entry point for the rename files function
@@ -272,7 +275,7 @@ public class UserFile implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         fileChooser.setInitialDirectory(new File("C:\\"));
-        DeleteCurrentFiles();
+        deleteUserInputs();
         enableDragAndDropReordering(UserFileList);
     }
 }

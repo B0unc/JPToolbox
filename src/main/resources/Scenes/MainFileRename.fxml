@@ -14,7 +14,7 @@
     <Label layoutX="594.0" layoutY="115.0" text="Number of total episodes:" />
     <TextField fx:id="UserNumShow" layoutX="594.0" layoutY="132.0" promptText="# of total episodes" />
     <Button fx:id="UserNameNumSave" layoutX="702.0" layoutY="188.0" mnemonicParsing="false" onAction="#SaveUserNameNum" text="Save" />
-    <Button fx:id="RemoveUserFiles" layoutX="14.0" layoutY="361.0" mnemonicParsing="false" onAction="#DeleteCurrentFiles" text="Cancel" />
+    <Button fx:id="RemoveUserFiles" layoutX="14.0" layoutY="361.0" mnemonicParsing="false" onAction="#deleteUserInputs" text="Cancel" />
     <Label fx:id="UserNumError" layoutX="594.0" layoutY="162.0" prefHeight="17.0" prefWidth="149.0" textFill="RED" />
     <Label fx:id="PreviewTitleLabel" layoutX="589.0" layoutY="218.0" prefHeight="17.0" prefWidth="92.0" text="Preview of Title:" />
     <Label fx:id="PreviewShowTitle" layoutX="589.0" layoutY="243.0" prefHeight="26.0" prefWidth="195.0" underline="true" />
